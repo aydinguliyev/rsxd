@@ -1,9 +1,12 @@
-import Form from "./Component/Form/index";
+import Expences from "./Component/Expences";
+import Incomes from "./Component/Income";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <Expences />
+      <Incomes />
     </div>
   );
 }

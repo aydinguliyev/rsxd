@@ -1,0 +1,24 @@
+.total-container {
+  width: 150px;
+  background-color: #d32966;
+  padding: 10px;
+  position: relative;
+}
+
+.total-item {
+  border: 2px solid #ccc;
+  color: #ccc;
+  text-align: center;
+  padding: 7px;
+}
+
+.total-info {
+  color: #ccc;
+  font-size: 9px;
+  position: absolute;
+  margin-left: 35px;
+  text-align: center;
+  background-color: #d32966;
+  bottom: 4px;
+  padding: 0 5px;
+}

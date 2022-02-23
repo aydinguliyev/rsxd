@@ -1,0 +1,18 @@
+.months-container {
+  display: flex;
+  margin-right: 25px;
+}
+
+.month-item {
+  list-style: none;
+  color: #ccc;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ccc;
+  margin-left: 10px;
+  font-size: 13px;
+}
+
+.month-item:hover {
+  background-color: #cccccc5e;
+  cursor: pointer;
+}

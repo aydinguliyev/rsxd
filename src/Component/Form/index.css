@@ -1,3 +1,83 @@
 form {
   display: flex;
+  align-items: center;
+}
+
+.dateInput {
+  width: 95px;
+  background-color: #ccc;
+  border: none;
+  margin: 0 7px;
+  text-align: center;
+  resize: none;
+  outline: none;
+  border-color: inherit;
+  border-bottom: 1px solid transparent;
+}
+.dateInput:focus {
+  border: none;
+  text-decoration: none;
+  border-bottom: 1px solid #636363;
+}
+
+.descriptionInput {
+  width: 160px;
+  background-color: #ccc;
+  border: none;
+  margin: 0 7px;
+  padding-left: 5px;
+  resize: none;
+  outline: none;
+  border-color: inherit;
+  border-bottom: 1px solid transparent;
+}
+
+.descriptionInput:focus {
+  border: none;
+  text-decoration: none;
+  border-bottom: 1px solid #636363;
+}
+
+.inputAmount {
+  width: 88px;
+  background-color: #ccc;
+  border: none;
+  margin: 0 7px;
+  padding-left: 5px;
+  resize: none;
+  outline: none;
+  border-color: inherit;
+  border-bottom: 1px solid transparent;
+}
+
+.inputAmount:focus {
+  border: none;
+  text-decoration: none;
+  border-bottom: 1px solid #636363;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.form-container {
+  width: 100%;
+  background-color: #ccc;
+  height: 36px;
+  margin-bottom: 15px;
+}
+
+.btn-form {
+  border: none;
+  background-color: #3e5673;
+  color: #e0e0e0;
+  padding: 4px 12px;
+  margin-left: 23px;
+}
+
+.btn-form:hover {
+  cursor: pointer;
+  background-color: #5b799e;
 }

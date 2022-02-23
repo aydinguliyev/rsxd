@@ -1,3 +1,49 @@
+.select-container {
+  width: 90px;
+  padding-left: 5px;
+}
+.selectHeader > span > i > span::selection,
+.selectList_item > span::selection {
+  background-color: transparent;
+}
+
 .selectList {
   position: absolute;
+  margin-top: 9px;
+  background-color: #e0e0e0;
+  /* border: 1px solid #888888; */
+  margin-left: -6px;
+  width: 95px;
+}
+
+.selectList_item {
+  padding: 3px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.selectList_item:hover {
+  background-color: #ccc;
+}
+.select-container:focus {
+  border: 1px solid #7b7b7b;
+}
+
+div.selectHeader,
+div.selectList {
+  cursor: pointer;
+  font-weight: 200;
+}
+
+div.selectHeader > span > i > span {
+  font-weight: 200;
+}
+
+.fa-caret-down::before {
+  position: absolute;
+  margin-left: 70px;
+}
+
+.fa-caret-up::before {
+  position: absolute;
+  margin-left: 70px;
 }

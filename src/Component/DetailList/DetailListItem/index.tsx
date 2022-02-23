@@ -1,3 +1,5 @@
+import "./index.css";
+
 interface IExpencesList {
   account: string;
   place: string;
@@ -18,18 +20,25 @@ const DetailListItem = ({
   accountIcon,
 }: IExpencesList) => {
   return (
-    <li>
-      <span>{date}</span>-
-      <span>
+    <li className="detailListItem">
+      <span className="date-item">{date}</span>
+
+      <span className="category-item">
         <i className={categoryIcon}></i>
         {category}
       </span>
-      -<span>{place}</span>-<span>{amount}</span>-
-      <span>
-        {" "}
+
+      <span className="place-item">{place}</span>
+
+      <span className="amount-item">{amount}</span>
+
+      <span className="account-item">
         <i className={accountIcon}></i>
         {account}
       </span>
+      <button className="btn-delete-item">
+        <i className="fas fa-trash"></i>
+      </button>
     </li>
   );
 };

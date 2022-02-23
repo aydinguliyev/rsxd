@@ -1,0 +1,7 @@
+.expences-container {
+  display: flex;
+  flex-direction: column;
+  width: 637px;
+  background-color: #3e5673;
+  width: 50%;
+}

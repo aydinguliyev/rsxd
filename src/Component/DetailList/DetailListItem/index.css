@@ -1,0 +1,81 @@
+.detailListItem {
+  display: flex;
+  border-bottom: 0.8px solid #fff;
+}
+
+.detailListItem > span {
+  padding-left: 5px;
+  color: white;
+}
+
+.date-item {
+  width: 98px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.category-item {
+  width: 92px;
+  text-align: center;
+  display: flex;
+  font-size: 16px;
+}
+
+.category-item > i {
+  color: #3e5673;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-right: 3px;
+}
+
+.place-item {
+  width: 165px;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.amount-item {
+  width: 60px;
+  text-align: right;
+  font-size: 16px;
+}
+
+.account-item {
+  width: 92px;
+  text-align: center;
+  margin-left: 30px;
+  font-size: 16px;
+}
+
+.account-item > i {
+  margin-right: 5px;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.btn-delete-item {
+  width: 50px;
+  background-color: #d32966;
+  border: none;
+  margin: 2px 0 2px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-delete-item:hover {
+  background-color: #d32967c9;
+}
+
+.btn-delete-item > .fa-trash {
+  color: #ccc;
+  font-size: 11px;
+}

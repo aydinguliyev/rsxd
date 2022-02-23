@@ -1,15 +1,76 @@
-import { FC, useEffect, useRef, useState } from "react";
-import { accounts } from "../../Models/accounts";
-import { IExpencesList } from "../../Models/index";
-import { options } from "../../Models/options";
+import { FC, useState } from "react";
+import {
+  Category,
+  IAccounts,
+  IExpencesList,
+  IOptions,
+} from "../../Models/index";
 import { expenceTime } from "../../Utils";
-import DetailListItem from "../DetailListItem";
+import DetailList from "../DetailList";
+import Filter from "../Filter";
+import Monthsbar from "../Monthsbar";
 import Select from "../Select";
 import Total from "../Total";
 import "./index.css";
 
-const Form: FC = () => {
-  const [expences, setExpences] = useState<Array<IExpencesList>>([]);
+interface IProps {
+  options: Array<IOptions>;
+  accounts: Array<IAccounts>;
+}
+
+const Form: FC<IProps> = ({ options, accounts }) => {
+  const [expences, setExpences] = useState<Array<IExpencesList>>([
+    {
+      id: Math.random().toString(36).substring(2, 9),
+      date: "22.02.22",
+      place: "trf",
+      amount: "12",
+      category: Category.MAR,
+      account: "debet",
+      categoryIcon: "fas fa-dot",
+      accountIcon: "fas fa-dot",
+    },
+    {
+      id: Math.random().toString(36).substring(2, 9),
+      date: "22.02.22",
+      place: "trf",
+      amount: "102",
+      category: Category.TRN,
+      account: "debet",
+      categoryIcon: "fas fa-dot",
+      accountIcon: "fas fa-dot",
+    },
+    {
+      id: Math.random().toString(36).substring(2, 9),
+      date: "22.02.22",
+      place: "trf",
+      amount: "18",
+      category: Category.CLS,
+      account: "debet",
+      categoryIcon: "fas fa-dot",
+      accountIcon: "fas fa-dot",
+    },
+    {
+      id: Math.random().toString(36).substring(2, 9),
+      date: "22.02.22",
+      place: "trf",
+      amount: "73",
+      category: Category.MAR,
+      account: "debet",
+      categoryIcon: "fas fa-dot",
+      accountIcon: "fas fa-dot",
+    },
+    {
+      id: Math.random().toString(36).substring(2, 9),
+      date: "22.02.22",
+      place: "trf",
+      amount: "15",
+      category: Category.HLT,
+      account: "debet",
+      categoryIcon: "fas fa-dot",
+      accountIcon: "fas fa-dot",
+    },
+  ]);
   const [date, setDate] = useState<string>(expenceTime);
   const [category, setCategory] = useState("");
   const [place, setPlace] = useState("");
@@ -18,6 +79,7 @@ const Form: FC = () => {
   const [total, setTotal] = useState<number>(0);
   const [iconCategory, setIconCategory] = useState("");
   const [iconAccount, setIconAccount] = useState("");
+  const [reset, setReset] = useState<boolean>(false);
 
   const handlePlace = (e: any) => {
     setPlace(e.target.value);
@@ -33,12 +95,14 @@ const Form: FC = () => {
   };
 
   const handleCategorySelect = (value: any, icon: any) => {
-    setCategory(value || options[0].value);
+    setReset(false);
+    setCategory(value);
     setIconCategory(icon);
   };
 
   const handleAccountSelect = (value: any, icon: any) => {
-    setAccount(value || accounts[0].value);
+    setReset(false);
+    setAccount(value);
     setIconAccount(icon);
   };
 
@@ -51,7 +115,8 @@ const Form: FC = () => {
       category != "category" &&
       account != "account"
     ) {
-      const t = {
+      const expence = {
+        id: Math.random().toString(36).substring(2, 9),
         date: date,
         place: place,
         amount: amount,
@@ -60,7 +125,7 @@ const Form: FC = () => {
         categoryIcon: iconCategory,
         accountIcon: iconAccount,
       };
-      setExpences([...expences, t]);
+      setExpences([...expences, expence]);
       setTotal(Number(total) + Number(amount));
       updateForm();
     } else {
@@ -71,13 +136,19 @@ const Form: FC = () => {
   const updateForm = () => {
     setPlace("");
     setAmount("");
+    setReset(true);
   };
 
   return (
     <>
-      <Total totalAmount={total} />
-      <form>
+      <div className="nav-header">
+        <Monthsbar />
+        <Total totalAmount={total} />
+      </div>
+      <Filter data={expences} />
+      <form className="form-container">
         <input
+          className="dateInput"
           type="text"
           value={date}
           placeholder="date"
@@ -85,6 +156,7 @@ const Form: FC = () => {
         />
 
         <Select
+          update={reset}
           className={"category"}
           label={"category"}
           options={options}
@@ -95,11 +167,13 @@ const Form: FC = () => {
 
         <input
           type="text"
-          placeholder="place"
+          placeholder="description"
+          className="descriptionInput"
           onChange={handlePlace}
           value={place}
         />
         <input
+          className="inputAmount"
           type="text"
           value={amount}
           placeholder="amount"
@@ -107,6 +181,7 @@ const Form: FC = () => {
         />
 
         <Select
+          update={reset}
           className={"account"}
           label={"account"}
           options={accounts}
@@ -115,27 +190,11 @@ const Form: FC = () => {
           }
         />
 
-        <button onClick={handleSubmit}>add</button>
+        <button className="btn-form" onClick={handleSubmit}>
+          add
+        </button>
       </form>
-      {expences?.map(
-        (
-          { date, account, place, amount, category, accountIcon, categoryIcon },
-          index
-        ) => {
-          return (
-            <DetailListItem
-              key={index}
-              date={date}
-              account={account}
-              place={place}
-              amount={amount}
-              category={category}
-              categoryIcon={categoryIcon}
-              accountIcon={accountIcon}
-            />
-          );
-        }
-      )}
+      <DetailList data={expences} />
     </>
   );
 };
